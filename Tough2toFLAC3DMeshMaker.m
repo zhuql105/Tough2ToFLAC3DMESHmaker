@@ -1,6 +1,6 @@
  clear all
  disp('Prepare ELEME.txt and CONNE.txt File')
- disp('If any question,contact with Zhuql@cumt.edu.cn')
+ disp('If any question,contact with QianlinZHU Zhuql@cumt.edu.cn')
 %  a=input("Input Total Meshes in X Direct： ");
 %  b=input("Input Total Meshes in Y Direct： ");
 %  c=input("Input Total Meshes in Z Direct： ");
