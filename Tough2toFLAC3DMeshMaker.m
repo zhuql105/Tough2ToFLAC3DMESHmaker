@@ -52,7 +52,7 @@ n=2;
 diamxyz=1;
 a1(3)=r1;
 while n<=r1
-       %从CONNE第二行，找00000001再次出现时候，即X连接结束位置，可判断Y向
+      
     if strcmp(TOUGHCNNE{n,1},'00000001')
         a1(diamxyz)=n-1; 
         diamxyz=diamxyz+1;
@@ -64,7 +64,7 @@ end
    c=a1(1)/(a-1)-a1(2)/a;
    b=a1(1)/(a-1)-a1(3)/a;
    
- meshdiam(1,1:3)=[a,b,c];%tough2网格行列层数；   
+ meshdiam(1,1:3)=[a,b,c];   
  clear n diamxyz a b c a1 r1;
 
 
@@ -72,9 +72,9 @@ end
 % tough2 角点网格计算: 共为(X网格数+1)*(Y网格+1)*(Z网格+1)
 % 结点编号按X-->Y-->Z依次编号
 n=1;
-nx_countbigin=1;% X周期性计数,判断网格首尾联接，即X方向的尾巴单元
+nx_countbigin=1;
 m=1;
-nx2y=0; %用于判断是否到达Y方向最后一排网格
+nx2y=0; 
 nxcopy=1;
 % X坐标计算
 TOUGHcorXYZ{(meshdiam(1,1)+1)*(meshdiam(1,2)+1)*(meshdiam(1,3)+1),4}=0;
@@ -85,9 +85,6 @@ while n<=(meshdiam(1,1)-1)*meshdiam(1,2)*meshdiam(1,3) % x direction conne numbe
    xlarge_meshnum=find(strcmp(toughxyz(:,1),TOUGHCNNE{n,2})==1);
     if nx_countbigin==1  %第一个连接时
     TOUGHcorXYZ{m,1}=m; %结点编号，采用数值型
-    %左边结点采用外推插值 直接用第一结点值加上该值即为外推边界结点压力值
-    %边外推值-单元结点 与单元结点与右点的差成比例
-    %基准是左侧原则，即第1结点以第一单元为基准，修正压力,以次类推    
     TOUGHcorXYZ{m,2}=toughxyz{xsmall_meshnum,3}-TOUGHCNNE{n,3}; %tough2 结点P因X方向坐标的变化量
         
     %中间结点
